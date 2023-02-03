@@ -33,7 +33,6 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
-    const [level, setLevel] = useState();
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -45,7 +44,6 @@ const AuthRegister = () => {
 
     const changePassword = (value) => {
         const temp = strengthIndicator(value);
-        setLevel(strengthColor(temp));
     };
 
     useEffect(() => {
@@ -207,31 +205,8 @@ const AuthRegister = () => {
                                         </FormHelperText>
                                     )}
                                 </Stack>
-                                <FormControl fullWidth sx={{ mt: 2 }}>
-                                    <Grid container spacing={2} alignItems="center">
-                                        <Grid item>
-                                            <Box sx={{ bgcolor: level?.color, width: 85, height: 8, borderRadius: '7px' }} />
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography variant="subtitle1" fontSize="0.75rem">
-                                                {level?.label}
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                </FormControl>
                             </Grid>
-                            <Grid item xs={12}>
-                                <Typography variant="body2">
-                                    By Signing up, you agree to our &nbsp;
-                                    <Link variant="subtitle2" component={RouterLink} to="#">
-                                        Terms of Service
-                                    </Link>
-                                    &nbsp; and &nbsp;
-                                    <Link variant="subtitle2" component={RouterLink} to="#">
-                                        Privacy Policy
-                                    </Link>
-                                </Typography>
-                            </Grid>
+
                             {errors.submit && (
                                 <Grid item xs={12}>
                                     <FormHelperText error>{errors.submit}</FormHelperText>
@@ -251,14 +226,6 @@ const AuthRegister = () => {
                                         Create Account
                                     </Button>
                                 </AnimateButton>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Divider>
-                                    <Typography variant="caption">Sign up with</Typography>
-                                </Divider>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FirebaseSocial />
                             </Grid>
                         </Grid>
                     </form>
