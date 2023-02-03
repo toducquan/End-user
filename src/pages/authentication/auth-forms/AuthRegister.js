@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, use } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 // material-ui
 import {
@@ -33,14 +34,21 @@ import { strengthColor, strengthIndicator } from 'utils/password-strength';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { getAllHobbies, registerUserService } from 'services/authService';
+import Chip from '@mui/material/Chip';
+import { useDispatch } from 'react-redux';
+import { raiseNotification } from 'store/reducers/notification';
 
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [hobbies, setHobbies] = useState([]);
+    const navigate = useNavigate();
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
+    const dispatch = useDispatch();
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
@@ -56,7 +64,14 @@ const AuthRegister = () => {
 
     useEffect(() => {
         changePassword('');
+        getAllHob();
     }, []);
+
+    const getAllHob = () => {
+        getAllHobbies().then((res) => {
+            setHobbies(res.data.data);
+        });
+    };
 
     return (
         <>
@@ -82,7 +97,10 @@ const AuthRegister = () => {
                     motherAge: '',
                     motherEmail: '',
                     motherPhone: '',
-                    motherOccupation: ''
+                    motherOccupation: '',
+                    grade: '',
+                    major: '',
+                    hobbies: []
                 }}
                 validationSchema={Yup.object().shape({
                     name: Yup.string().max(255).required('Name is required'),
@@ -94,6 +112,13 @@ const AuthRegister = () => {
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
+                        registerUserService({
+                            ...values,
+                            isSmoking: values.isSmoking == 'true'
+                        }).then((res) => {
+                            dispatch(raiseNotification({ visible: true, content: 'Create successfully', severity: 'success' }));
+                            navigate('/login');
+                        });
                         setStatus({ success: false });
                         setSubmitting(false);
                     } catch (err) {
@@ -421,6 +446,58 @@ const AuthRegister = () => {
                                     )}
                                 </Stack>
                             </Grid>
+                            <Grid item xs={12} md={6}>
+                                <Stack spacing={1}>
+                                    <InputLabel htmlFor="grade-signup">Grade</InputLabel>
+                                    <Select
+                                        id="grade-login"
+                                        type="grade"
+                                        value={values.grade}
+                                        name="grade"
+                                        onBlur={handleBlur}
+                                        onChange={handleChange}
+                                        fullWidth
+                                        error={Boolean(touched.grade && errors.grade)}
+                                    >
+                                        <MenuItem value={'first'}>Năm nhất</MenuItem>
+                                        <MenuItem value={'second'}>Năm hai</MenuItem>
+                                        <MenuItem value={'third'}>Năm ba</MenuItem>
+                                        <MenuItem value={'fouth'}>Năm bốn</MenuItem>
+                                        <MenuItem value={'fifth'}>Năm năm</MenuItem>
+                                    </Select>
+                                    {touched.grade && errors.grade && (
+                                        <FormHelperText error id="helper-text-grade-signup">
+                                            {errors.grade}
+                                        </FormHelperText>
+                                    )}
+                                </Stack>
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                                <Stack spacing={1}>
+                                    <InputLabel htmlFor="major-signup">Major</InputLabel>
+                                    <Select
+                                        fullWidth
+                                        error={Boolean(touched.major && errors.major)}
+                                        id="major-signup"
+                                        type="major"
+                                        value={values.major}
+                                        name="major"
+                                        onBlur={handleBlur}
+                                        onChange={handleChange}
+                                        inputProps={{}}
+                                    >
+                                        <MenuItem value={'IT1'}>KHMT</MenuItem>
+                                        <MenuItem value={'IT2'}>KTMT</MenuItem>
+                                        <MenuItem value={'IT3'}>CNTT</MenuItem>
+                                        <MenuItem value={'IT4'}>ATTT</MenuItem>
+                                    </Select>
+                                    {touched.major && errors.major && (
+                                        <FormHelperText error id="helper-text-major-signup">
+                                            {errors.major}
+                                        </FormHelperText>
+                                    )}
+                                </Stack>
+                            </Grid>
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="isSmoking-signup">
@@ -436,7 +513,6 @@ const AuthRegister = () => {
                                         name="isSmoking"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        inputProps={{}}
                                     >
                                         <FormControlLabel value={true} control={<Radio />} label={'Có'} />
                                         <FormControlLabel value={false} control={<Radio />} label={'Không'} />
@@ -651,6 +727,33 @@ const AuthRegister = () => {
                                             {errors.motherOccupation}
                                         </FormHelperText>
                                     )}
+                                </Stack>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Stack spacing={1}>
+                                    <InputLabel htmlFor="hobbies-signup">Hobbies</InputLabel>
+                                    <Select
+                                        labelId="demo-multiple-chip-label"
+                                        id="demo-multiple-chip"
+                                        multiple
+                                        name="hobbies"
+                                        value={values.hobbies}
+                                        onChange={handleChange}
+                                        input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+                                        renderValue={(selected) => (
+                                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                                {selected.map((value) => (
+                                                    <Chip key={value} label={value} />
+                                                ))}
+                                            </Box>
+                                        )}
+                                    >
+                                        {hobbies?.map((name) => (
+                                            <MenuItem key={name} value={name}>
+                                                {name}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
                                 </Stack>
                             </Grid>
                             {errors.submit && (

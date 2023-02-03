@@ -11,3 +11,11 @@ export const loginUserService = async (data) => {
 export const getProfileUserService = async () => {
     return await apiUtils.get('/auth');
 };
+
+export const getAllHobbies = async () => {
+    return await apiUtils.get('/hobbies');
+};
+
+export const registerUserService = async (data) => {
+    return await apiUtils.post('/auth/register', data);
+};
