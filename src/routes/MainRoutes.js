@@ -8,6 +8,7 @@ import MainLayout from 'layout/MainLayout';
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const BuildingList = Loadable(lazy(() => import('pages/building/BuildingList')));
 const BuildingDetail = Loadable(lazy(() => import('pages/building/BuildingDetail')));
+const MyRoom = Loadable(lazy(() => import('pages/room/MyRoom')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -17,7 +18,7 @@ const MainRoutes = {
     children: [
         {
             path: '/',
-            element: <DashboardDefault />
+            element: <MyRoom />
         },
         {
             path: '/building',

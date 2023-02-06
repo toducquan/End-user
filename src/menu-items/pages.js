@@ -1,9 +1,24 @@
-import { DashboardOutlined, HomeOutlined } from '@ant-design/icons';
+import {
+    DashboardOutlined,
+    HomeOutlined,
+    UserOutlined,
+    GroupOutlined,
+    TransactionOutlined,
+    FileDoneOutlined,
+    RetweetOutlined,
+    IdcardOutlined
+} from '@ant-design/icons';
 
 // icons
 const icons = {
     DashboardOutlined,
-    HomeOutlined
+    HomeOutlined,
+    UserOutlined,
+    GroupOutlined,
+    TransactionOutlined,
+    FileDoneOutlined,
+    RetweetOutlined,
+    IdcardOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -14,12 +29,12 @@ const pages = {
     type: 'group',
     children: [
         {
-            id: 'dashboard',
-            title: 'Dashboard',
+            id: 'my-room',
+            title: 'My Room',
             type: 'item',
             url: '/',
-            icon: icons.DashboardOutlined,
-            breadcrumbs: false
+            icon: icons.GroupOutlined,
+            breadcrumbs: true
         },
         {
             id: 'building',
