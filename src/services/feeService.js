@@ -1,7 +1,7 @@
 import { apiUtils } from 'utils/api.util';
 
 export const getListFeeService = async (query) => {
-    const res = await apiUtils.get('/fees', query);
+    const res = await apiUtils.get('/fees/student', query);
     return res;
 };
 

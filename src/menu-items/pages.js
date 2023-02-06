@@ -6,7 +6,8 @@ import {
     TransactionOutlined,
     FileDoneOutlined,
     RetweetOutlined,
-    IdcardOutlined
+    IdcardOutlined,
+    SettingOutlined
 } from '@ant-design/icons';
 
 // icons
@@ -18,7 +19,8 @@ const icons = {
     TransactionOutlined,
     FileDoneOutlined,
     RetweetOutlined,
-    IdcardOutlined
+    IdcardOutlined,
+    SettingOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -52,6 +54,45 @@ const pages = {
                     breadcrumbs: true
                 }
             ]
+        },
+        {
+            id: 'my-aspiration',
+            title: 'Aspiration',
+            type: 'item',
+            url: '/aspiration',
+            icon: icons.IdcardOutlined,
+            breadcrumbs: true
+        },
+        {
+            id: 'swap-room',
+            title: 'Swap room',
+            type: 'item',
+            url: '/swap-room',
+            icon: icons.RetweetOutlined,
+            breadcrumbs: true
+        },
+        {
+            id: 'fee',
+            title: 'Fee',
+            type: 'item',
+            url: '/fee',
+            icon: icons.FileDoneOutlined
+        },
+        {
+            id: 'rent',
+            title: 'Rent',
+            type: 'item',
+            url: '/rent',
+            icon: icons.TransactionOutlined,
+            breadcrumbs: true
+        },
+        {
+            id: 'setting',
+            title: 'Setting',
+            type: 'item',
+            url: '/setting',
+            icon: icons.SettingOutlined,
+            breadcrumbs: true
         }
     ]
 };

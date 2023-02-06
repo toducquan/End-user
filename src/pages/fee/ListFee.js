@@ -1,7 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Grid, Stack, Typography, Box, Button, InputLabel, FormControl, OutlinedInput, InputAdornment } from '@mui/material';
+import {
+    Grid,
+    Stack,
+    Typography,
+    Box,
+    Button,
+    InputLabel,
+    FormControl,
+    OutlinedInput,
+    InputAdornment,
+    Select,
+    MenuItem
+} from '@mui/material';
 import { SearchOutlined } from '@ant-design/icons';
-import { getListBuildingService } from 'services/buildingService';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,39 +29,38 @@ import EmptyRows from 'components/EmptyRows';
 import ModalDelete from 'components/ModalDelete';
 import LoadingPage from 'components/LoadingPage';
 import Breakword from 'components/common/breakword/index';
-import { setBuildingList } from 'store/reducers/building';
+import { getListFeeService } from 'services/feeService';
+import * as moment from 'moment';
 
 // Des: UI and function List company
-const BuildingList = () => {
+const ListFee = () => {
     const { t } = useTranslation();
 
-    const [buildings, setBuilding] = useState();
-    const [buildingQuery, setBuildingQuery] = useState();
-    const [modalDeleteVisible, setModalDeleteVisible] = useState(false);
-    const [selectedCompany, setSelectedCompany] = useState();
+    const [fees, setFee] = useState();
+    const [feeQuery, setFeeQuery] = useState();
     const [isLoading, setIsLoading] = useState(false);
-    const [isLoadingSearch, setIsLoadingSearch] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const tableRef = useRef();
     const inputRef = useRef(null);
+    const [isLoadingSearch, setIsLoadingSearch] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
-        setBuildingQuery();
-        getBuilding();
+        getFee();
     }, []);
 
     // Delete company in list company
-    const deleteBuilding = () => {};
-
     // Get list company
-    const getBuilding = () => {
+    const getFee = () => {
         setIsLoadingSearch(true);
         setTimeout(() => {
-            getListBuildingService(buildingQuery)
+            getListFeeService({
+                ...feeQuery,
+                type: feeQuery?.type == '' ? undefined : feeQuery?.type
+            })
                 .then((res) => {
-                    setBuilding(res.data);
+                    setFee(res.data);
                     setIsLoadingSearch(false);
                     setIsLoading(false);
                 })
@@ -61,10 +71,6 @@ const BuildingList = () => {
     };
 
     // Close modal edit team
-    const callbackClose = (childData) => {
-        setModalDeleteVisible(false);
-    };
-
     return (
         <>
             {isLoading ? (
@@ -72,30 +78,26 @@ const BuildingList = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">Buildings</Typography>
+                        <Typography variant="h4">Fee List</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
                             <FormControl sx={{ width: { xs: '100%', md: 224 } }}>
-                                <OutlinedInput
+                                <Select
                                     size="small"
                                     id="header-search"
-                                    ref={inputRef}
-                                    startAdornment={
-                                        <InputAdornment position="start" sx={{ mr: -0.5 }}>
-                                            <SearchOutlined />
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="header-search-text"
-                                    inputProps={{
-                                        'aria-label': 'weight'
-                                    }}
-                                    placeholder={t('Enter building name')}
-                                    value={buildingQuery?.name}
-                                    onChange={(e) => setBuildingQuery({ ...buildingQuery, name: e.target.value })}
-                                />
+                                    value={feeQuery?.type ? feeQuery?.type : ''}
+                                    displayEmpty
+                                    inputProps={{ 'aria-label': 'Without label' }}
+                                    onChange={(e) => setFeeQuery({ ...feeQuery, type: e.target.value })}
+                                >
+                                    <MenuItem value={''}>All fee</MenuItem>
+                                    <MenuItem value="Electric">Electric</MenuItem>
+                                    <MenuItem value="Water">Water</MenuItem>
+                                    <MenuItem value="Internet">Internet</MenuItem>
+                                </Select>
                             </FormControl>
-                            <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getBuilding()}>
+                            <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getFee()}>
                                 {t('Search')}
                             </Button>
                         </Stack>
@@ -119,24 +121,29 @@ const BuildingList = () => {
                                                 {t('Name')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Number of floors')}
+                                                {t('Cost')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Address')}
+                                                {t('Type')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Manager')}
+                                                {t('Create at')}
                                             </TableCell>
-                                            <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
+                                            <TableCell width="10%" style={{ minWidth: 80 }} align="left">
+                                                {t('Deadline')}
+                                            </TableCell>
+                                            <TableCell width="10%" style={{ minWidth: 80 }} align="left">
+                                                {t('Paid')}
+                                            </TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {buildings?.map((row, index) => (
+                                        {fees?.map((row, index) => (
                                             <TableRow hover key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                                 <TableCell align="left">{index}</TableCell>
                                                 <TableCell align="left">
                                                     <Breakword
-                                                        text={row?.name}
+                                                        text={row?.fee?.name}
                                                         width={{
                                                             xs: '140px',
                                                             sm: '140px',
@@ -146,44 +153,18 @@ const BuildingList = () => {
                                                         }}
                                                     />
                                                 </TableCell>
-                                                <TableCell align="left">{row?.numberOfFloors}</TableCell>
-                                                <TableCell align="left">{row?.address || '-'}</TableCell>
-                                                <TableCell align="left">{row?.manager.name || '-'}</TableCell>
-                                                <TableCell align="center">
-                                                    <Grid container>
-                                                        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-                                                            <Button
-                                                                variant="contained"
-                                                                sx={{
-                                                                    width: '74.33px',
-                                                                    marginBottom: '0.3rem',
-                                                                    height: '1.8rem',
-                                                                    pt: 0.8
-                                                                }}
-                                                                onClick={() => navigate(`/building/${row?.id}`)}
-                                                            >
-                                                                {t('Detail')}
-                                                            </Button>
-                                                        </Grid>
-                                                    </Grid>
-                                                </TableCell>
+                                                <TableCell align="left">{row?.fee?.cost}</TableCell>
+                                                <TableCell align="left">{row?.fee?.type}</TableCell>
+                                                <TableCell align="left">{moment(row?.fee?.createdAt).format('YYYY-MM-DD')}</TableCell>
+                                                <TableCell align="left">{moment(row?.fee?.deadline).format('YYYY-MM-DD')}</TableCell>
+                                                <TableCell align="left">{row?.paid ? 'Done' : '_'}</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>
                                 </Table>
-                                {buildings?.length <= 0 && <EmptyRows />}
+                                {fees?.length <= 0 && <EmptyRows />}
                             </TableContainer>
                         </Paper>
-                    )}
-                    {modalDeleteVisible && (
-                        <ModalDelete
-                            title={t('Delete this building?')}
-                            content={t('')}
-                            textBtnBack={t('back')}
-                            textBtnSubmit={t('delete')}
-                            action={deleteBuilding}
-                            callbackClose={callbackClose}
-                        />
                     )}
                 </React.Fragment>
             )}
@@ -191,4 +172,4 @@ const BuildingList = () => {
     );
 };
 
-export default BuildingList;
+export default ListFee;

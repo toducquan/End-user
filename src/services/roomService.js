@@ -24,3 +24,8 @@ export const removeStudentsInRoomService = async (data) => {
     const res = await apiUtils.patch('/rooms/students-in-room', data);
     return res;
 };
+
+export const studentSmartSort = async () => {
+    const res = await apiUtils.get('/rooms/suitable-room');
+    return res;
+};

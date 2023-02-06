@@ -5,6 +5,16 @@ export const getAllAspiration = async (query) => {
     return res;
 };
 
+export const getMyAspirationService = async () => {
+    const res = await apiUtils.get('/aspiration/my-aspiration');
+    return res;
+};
+
+export const createAspirationService = async (data) => {
+    const res = await apiUtils.post('/aspiration', data);
+    return res;
+};
+
 export const approveAspiration = async (data) => {
     const res = await apiUtils.post('/aspiration/approve-multiple-aspiration', data);
     return res;

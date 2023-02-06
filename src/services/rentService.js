@@ -1,7 +1,7 @@
 import { apiUtils } from 'utils/api.util';
 
 export const getListRentService = async (query) => {
-    const res = await apiUtils.get('/rents', query);
+    const res = await apiUtils.get('/rents/student', query);
     return res;
 };
 
