@@ -49,13 +49,13 @@ const SwapReceive = ({ isLoading, swapList, handleApproveSwap, handleRejectSwap 
                                             {t('No')}
                                         </TableCell>
                                         <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                            {t('Request user')}
+                                            {t('Người gửi')}
                                         </TableCell>
                                         <TableCell width="20%" style={{ minWidth: 80 }} align="left">
-                                            {t('Room')}
+                                            {t('Phòng')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                            {t('Create at')}
+                                            {t('Ngày tạo')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                     </TableRow>
@@ -91,14 +91,14 @@ const SwapReceive = ({ isLoading, swapList, handleApproveSwap, handleRejectSwap 
                                                             }}
                                                             onClick={() => handleApproveSwap(row.id)}
                                                         >
-                                                            {t('Approve')}
+                                                            {t('Duyệt')}
                                                         </Button>
                                                     </Grid>
                                                     <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
                                                         <Button
                                                             variant="contained"
                                                             sx={{
-                                                                width: '74.33px',
+                                                                width: '94.33px',
                                                                 marginLeft: { lg: '1rem' },
                                                                 height: '1.8rem',
                                                                 pt: 0.8,
@@ -107,7 +107,7 @@ const SwapReceive = ({ isLoading, swapList, handleApproveSwap, handleRejectSwap 
                                                             onClick={() => handleRejectSwap(row.id)}
                                                             color="error"
                                                         >
-                                                            {t('Reject')}
+                                                            {t('Từ chối')}
                                                         </Button>
                                                     </Grid>
                                                 </Grid>

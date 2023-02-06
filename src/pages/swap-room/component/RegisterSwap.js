@@ -45,7 +45,7 @@ const RegisterSwap = ({ isLoading, setIsLoading, receiverUser, setReceiverUser }
             })
                 .then((res) => {
                     setReceiverUser();
-                    dispatch(raiseNotification({ visible: true, content: 'Submit successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Đã gửi đơn đổi phòng', severity: 'success' }));
                     setIsLoading(false);
                 })
                 .catch((err) => {
@@ -63,7 +63,7 @@ const RegisterSwap = ({ isLoading, setIsLoading, receiverUser, setReceiverUser }
                     <Grid xs={10} sm={9} md={8} lg={7} xl={5} spacing={3}>
                         <Grid item xs={10} sx={{ mb: 1 }}>
                             <InputLabel htmlFor="address" style={{ color: mainColor }}>
-                                {t('Student Id')}
+                                {t('Mã số sinh viên')}
                             </InputLabel>
                             <OutlinedInput
                                 id="building-name"
@@ -80,7 +80,7 @@ const RegisterSwap = ({ isLoading, setIsLoading, receiverUser, setReceiverUser }
                                 color="primary"
                                 onClick={handleSearchUser}
                             >
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Grid>
                         {receiverUser && (

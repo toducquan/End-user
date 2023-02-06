@@ -52,11 +52,11 @@ const StudentRoom = ({ studentInRoom, removeStudentsInRoom }) => {
                                 inputProps={{
                                     'aria-label': 'weight'
                                 }}
-                                placeholder={t('Enter student id')}
+                                placeholder={t('Nhập mssv')}
                             />
                         </FormControl>
                         <Button variant="contained" sx={{ ml: 3, width: 'rem' }}>
-                            {t('Search')}
+                            {t('Tìm kiếm')}
                         </Button>
                     </Stack>
                     <Stack direction="row">
@@ -67,7 +67,7 @@ const StudentRoom = ({ studentInRoom, removeStudentsInRoom }) => {
                                 color="error"
                                 onClick={() => removeStudentsInRoom(selectStudents)}
                             >
-                                {t('Remove')}
+                                {t('Xoá')}
                             </Button>
                         )}
                     </Stack>
@@ -85,16 +85,16 @@ const StudentRoom = ({ studentInRoom, removeStudentsInRoom }) => {
                                         {t('No')}
                                     </TableCell>
                                     <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                        {t('Name')}
+                                        {t('Họ tên')}
                                     </TableCell>
                                     <TableCell width="10%" style={{ minWidth: 80 }} align="left">
                                         {t('Email')}
                                     </TableCell>
                                     <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                        {t('Phone')}
+                                        {t('Số điện thoại')}
                                     </TableCell>
                                     <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                        {t('Student Id')}
+                                        {t('Mssv')}
                                     </TableCell>
                                 </TableRow>
                             </TableHead>

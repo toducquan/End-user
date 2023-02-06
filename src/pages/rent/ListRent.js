@@ -78,7 +78,7 @@ const ListRent = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">Rent List</Typography>
+                        <Typography variant="h4">Danh sách khoản thuê</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
@@ -87,13 +87,13 @@ const ListRent = () => {
                                     size="small"
                                     id="header-search"
                                     displayEmpty
-                                    placeHolder={'Enter name'}
+                                    placeHolder={'Nhập tên khoản thuê'}
                                     inputProps={{ 'aria-label': 'Without label' }}
                                     onChange={(e) => setRentQuery({ ...rentQuery, name: e.target.value })}
                                 />
                             </FormControl>
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getRent()}>
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Stack>
                     </Stack>
@@ -113,20 +113,20 @@ const ListRent = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="20%" style={{ minWidth: 100 }} align="left">
-                                                {t('Name')}
+                                                {t('Tên khoản thuê')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Cost')}
+                                                {t('Phải thu')}
                                             </TableCell>
 
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Create at')}
+                                                {t('Ngày tạo')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Deadline')}
+                                                {t('Thời hạn')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Paid')}
+                                                {t('Trạng thái')}
                                             </TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -149,7 +149,7 @@ const ListRent = () => {
                                                 <TableCell align="left">{row?.rent?.cost}</TableCell>
                                                 <TableCell align="left">{moment(row?.rent?.createdAt).format('YYYY-MM-DD')}</TableCell>
                                                 <TableCell align="left">{moment(row?.rent?.deadline).format('YYYY-MM-DD')}</TableCell>
-                                                <TableCell align="left">{row?.paid ? 'Done' : '_'}</TableCell>
+                                                <TableCell align="left">{row?.paid ? 'Xong' : '_'}</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>

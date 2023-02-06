@@ -66,12 +66,12 @@ const MyAspiration = () => {
                         secondRoomId: res?.data[1]?.roomId,
                         thirdRoomId: res?.data[2]?.roomId
                     });
-                    dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thành công', severity: 'success' }));
                 })
                 .catch((err) => {
                     setIsLoading(false);
                     console.log('err: ', err);
-                    dispatch(raiseNotification({ visible: true, content: 'Update failed', severity: 'error' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thất bại', severity: 'error' }));
                 });
         }, 500);
     };
@@ -83,12 +83,12 @@ const MyAspiration = () => {
                 .then((res) => {
                     setIsLoading(false);
                     getMyAspiration();
-                    dispatch(raiseNotification({ visible: true, content: 'Submit successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Gửi nguyện vọng thành công', severity: 'success' }));
                 })
                 .catch((err) => {
                     setIsLoading(false);
                     console.log('err: ', err);
-                    dispatch(raiseNotification({ visible: true, content: 'Submit failed', severity: 'error' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Gửi nguyện vọng thất bại', severity: 'error' }));
                 });
         }, 500);
     };
@@ -98,7 +98,7 @@ const MyAspiration = () => {
             {profile?.room ? (
                 <Grid sx={{ mr: 3, position: 'absolute', top: '40%', left: '50%', textAlign: 'center' }}>
                     <Typography variant="h5" sx={{ mb: 2 }}>
-                        Ban da duoc them vao phong {profile?.room?.name}
+                        Bạn đã được thêm vào phòng {profile?.room?.name}
                     </Typography>
                     <Button variant="contained" onClick={() => navigate('/')}>
                         Xem ngay
@@ -111,13 +111,13 @@ const MyAspiration = () => {
                     ) : (
                         <Box sx={{ width: '100%', mr: 2 }}>
                             <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
-                                {t('Dang ki nguyen vong')}
+                                {t('Đăng kí nguyện vọng')}
                             </Typography>
                             <Box sx={{ width: '45%', mb: 5 }}>
                                 <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                                     <Stack direction="row">
                                         <Button variant="contained" sx={{ mr: 3, width: '12rem' }} onClick={smartSort}>
-                                            {t('Xep phong thong minh')}
+                                            {t('Xếp phòng thông minh')}
                                         </Button>
                                     </Stack>
                                 </Stack>
@@ -127,7 +127,7 @@ const MyAspiration = () => {
                                     <Grid item xs={10} sx={{ mb: 1 }}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="address" style={{ color: mainColor }}>
-                                                {t('Nguyen vong 1')}
+                                                {t('Nguyện vọng 1')}
                                             </InputLabel>
                                             <Select
                                                 size="small"
@@ -144,7 +144,7 @@ const MyAspiration = () => {
                                     <Grid item xs={10} sx={{ mb: 1 }}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="address" style={{ color: mainColor }}>
-                                                {t('Nguyen vong 2')}
+                                                {t('Nguyện vọng 2')}
                                             </InputLabel>
                                             <Select
                                                 size="small"
@@ -161,7 +161,7 @@ const MyAspiration = () => {
                                     <Grid item xs={10} sx={{ mb: 1 }}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="address" style={{ color: mainColor }}>
-                                                {t('Nguyen vong 3')}
+                                                {t('Nguyện vọng 3')}
                                             </InputLabel>
                                             <Select
                                                 size="small"
@@ -182,7 +182,7 @@ const MyAspiration = () => {
                                     <Grid item>
                                         <AnimateButton>
                                             <Button disableElevation size="large" variant="contained" color="secondary">
-                                                {t('back')}
+                                                {t('Thoát')}
                                             </Button>
                                         </AnimateButton>
                                     </Grid>

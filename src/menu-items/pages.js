@@ -32,7 +32,7 @@ const pages = {
     children: [
         {
             id: 'my-room',
-            title: 'My Room',
+            title: 'Phòng của tôi',
             type: 'item',
             url: '/',
             icon: icons.GroupOutlined,
@@ -40,7 +40,7 @@ const pages = {
         },
         {
             id: 'building',
-            title: 'Building',
+            title: 'Toà nhà',
             type: 'item',
             url: '/building',
             icon: icons.HomeOutlined,
@@ -48,7 +48,7 @@ const pages = {
             children: [
                 {
                     id: 'building-detail',
-                    title: 'Building detail',
+                    title: 'Chi tiết toà nhà',
                     type: 'item-child',
                     url: '/building/:id',
                     breadcrumbs: true
@@ -57,7 +57,7 @@ const pages = {
         },
         {
             id: 'my-aspiration',
-            title: 'Aspiration',
+            title: 'Đăng kí nguyện vọng',
             type: 'item',
             url: '/aspiration',
             icon: icons.IdcardOutlined,
@@ -65,7 +65,7 @@ const pages = {
         },
         {
             id: 'swap-room',
-            title: 'Swap room',
+            title: 'Đăng kí đổi phòng',
             type: 'item',
             url: '/swap-room',
             icon: icons.RetweetOutlined,
@@ -73,14 +73,14 @@ const pages = {
         },
         {
             id: 'fee',
-            title: 'Fee',
+            title: 'Danh sách tiền phí',
             type: 'item',
             url: '/fee',
             icon: icons.FileDoneOutlined
         },
         {
             id: 'rent',
-            title: 'Rent',
+            title: 'Danh sách tiền thuê',
             type: 'item',
             url: '/rent',
             icon: icons.TransactionOutlined,
@@ -88,7 +88,7 @@ const pages = {
         },
         {
             id: 'setting',
-            title: 'Setting',
+            title: 'Cài đặt',
             type: 'item',
             url: '/setting',
             icon: icons.SettingOutlined,

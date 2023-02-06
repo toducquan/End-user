@@ -103,12 +103,12 @@ const AuthRegister = () => {
                     hobbies: []
                 }}
                 validationSchema={Yup.object().shape({
-                    name: Yup.string().max(255).required('Name is required'),
-                    age: Yup.string().max(255).required('Age is required'),
-                    studentId: Yup.string().max(255).required('Student Id is required'),
-                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                    password: Yup.string().max(255).required('Password is required'),
-                    phone: Yup.string().max(255).required('Phone is required')
+                    name: Yup.string().max(255).required('Tên không được để trống'),
+                    age: Yup.string().max(255).required('Tuổi không được để trống'),
+                    studentId: Yup.string().max(255).required('Mssv không được để trống'),
+                    email: Yup.string().email('Must be a valid email').max(255).required('Email không được để trống'),
+                    password: Yup.string().max(255).required('Mật khẩu không được để trống'),
+                    phone: Yup.string().max(255).required('Số điện thoại không được để trống')
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
@@ -135,7 +135,7 @@ const AuthRegister = () => {
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="name-signup">
-                                        Name
+                                        Họ và tên
                                         <StarRequired />
                                     </InputLabel>
                                     <OutlinedInput
@@ -158,7 +158,7 @@ const AuthRegister = () => {
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="age-signup">
-                                        Age
+                                        Tuổi
                                         <StarRequired />
                                     </InputLabel>
                                     <OutlinedInput
@@ -182,7 +182,7 @@ const AuthRegister = () => {
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="phone-signup">
-                                        Phone
+                                        Số điện thoại
                                         <StarRequired />
                                     </InputLabel>
                                     <OutlinedInput
@@ -229,7 +229,7 @@ const AuthRegister = () => {
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="password-signup">
-                                        Password
+                                        Mật khâu
                                         <StarRequired />
                                     </InputLabel>
                                     <OutlinedInput
@@ -268,7 +268,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="gender-signup">Gender</InputLabel>
+                                    <InputLabel htmlFor="gender-signup">Giới tính</InputLabel>
                                     <Select
                                         id="gender-login"
                                         type="gender"
@@ -291,7 +291,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="address-signup">Address</InputLabel>
+                                    <InputLabel htmlFor="address-signup">Địa chỉ</InputLabel>
                                     <Select
                                         fullWidth
                                         error={Boolean(touched.address && errors.address)}
@@ -376,7 +376,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="region-signup">Region</InputLabel>
+                                    <InputLabel htmlFor="region-signup">Quốc gia</InputLabel>
                                     <Select
                                         id="region-login"
                                         type="region"
@@ -399,7 +399,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="religion-signup">Religion</InputLabel>
+                                    <InputLabel htmlFor="religion-signup">Tôn giáo</InputLabel>
                                     <Select
                                         fullWidth
                                         error={Boolean(touched.religion && errors.religion)}
@@ -426,7 +426,7 @@ const AuthRegister = () => {
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="studentId-signup">
-                                        Student Id
+                                        Mssv
                                         <StarRequired />
                                     </InputLabel>
                                     <OutlinedInput
@@ -448,7 +448,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="grade-signup">Grade</InputLabel>
+                                    <InputLabel htmlFor="grade-signup">Năm học</InputLabel>
                                     <Select
                                         id="grade-login"
                                         type="grade"
@@ -474,7 +474,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="major-signup">Major</InputLabel>
+                                    <InputLabel htmlFor="major-signup">Chuyên ngành</InputLabel>
                                     <Select
                                         fullWidth
                                         error={Boolean(touched.major && errors.major)}
@@ -501,7 +501,7 @@ const AuthRegister = () => {
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="isSmoking-signup">
-                                        Is smoking?
+                                        Có hút thuốc?
                                         <StarRequired />
                                     </InputLabel>
                                     <RadioGroup
@@ -526,7 +526,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="fatherName-signup">Father name</InputLabel>
+                                    <InputLabel htmlFor="fatherName-signup">Họ tên bố</InputLabel>
                                     <OutlinedInput
                                         id="fatherName-login"
                                         type="fatherName"
@@ -546,7 +546,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="motherName-signup">Mother name</InputLabel>
+                                    <InputLabel htmlFor="motherName-signup">Họ tên mẹ</InputLabel>
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.motherName && errors.motherName)}
@@ -567,7 +567,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="fatherAge-signup">Father Age</InputLabel>
+                                    <InputLabel htmlFor="fatherAge-signup">Tuổi của bố</InputLabel>
                                     <OutlinedInput
                                         id="fatherAge-login"
                                         type="fatherAge"
@@ -587,7 +587,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="motherAge-signup">Mother Age</InputLabel>
+                                    <InputLabel htmlFor="motherAge-signup">Tuổi của mẹ</InputLabel>
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.motherAge && errors.motherAge)}
@@ -608,7 +608,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="fatherEmail-signup">Father email</InputLabel>
+                                    <InputLabel htmlFor="fatherEmail-signup">Email của bố</InputLabel>
                                     <OutlinedInput
                                         id="fatherEmail-login"
                                         type="fatherEmail"
@@ -628,7 +628,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="motherEmail-signup">Mother email</InputLabel>
+                                    <InputLabel htmlFor="motherEmail-signup">Email của mẹ</InputLabel>
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.motherEmail && errors.motherEmail)}
@@ -649,7 +649,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="fatherPhone-signup">Father phone</InputLabel>
+                                    <InputLabel htmlFor="fatherPhone-signup">Số điện thoại của bố</InputLabel>
                                     <OutlinedInput
                                         id="fatherPhone-login"
                                         type="fatherPhone"
@@ -669,7 +669,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="motherPhone-signup">Mother phone</InputLabel>
+                                    <InputLabel htmlFor="motherPhone-signup">Số điện thoại của mẹ</InputLabel>
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.motherPhone && errors.motherPhone)}
@@ -690,7 +690,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="fatherOccupation-signup">Father occupation</InputLabel>
+                                    <InputLabel htmlFor="fatherOccupation-signup">Nghề nghiệp của bố</InputLabel>
                                     <OutlinedInput
                                         id="fatherOccupation-login"
                                         type="fatherOccupation"
@@ -710,7 +710,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="motherOccupation-signup">Mother occupation</InputLabel>
+                                    <InputLabel htmlFor="motherOccupation-signup">Nghề nghiệp của mẹ</InputLabel>
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.motherOccupation && errors.motherOccupation)}
@@ -731,7 +731,7 @@ const AuthRegister = () => {
                             </Grid>
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="hobbies-signup">Hobbies</InputLabel>
+                                    <InputLabel htmlFor="hobbies-signup">Sở thích</InputLabel>
                                     <Select
                                         labelId="demo-multiple-chip-label"
                                         id="demo-multiple-chip"
@@ -772,7 +772,7 @@ const AuthRegister = () => {
                                         variant="contained"
                                         color="primary"
                                     >
-                                        Create Account
+                                        Tạo tài khoản
                                     </Button>
                                 </AnimateButton>
                             </Grid>

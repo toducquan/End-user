@@ -12,7 +12,7 @@ import config from 'config';
 
 const LogoSection = ({ sx, to }) => (
     <ButtonBase disableRipple component={Link} to={!to ? config.defaultPath : to} sx={sx}>
-        <Logo />
+        <img alt="hust" src="https://dongphucgiadinh.com/wp-content/uploads/2022/09/logo-dai-hoc-bach-khoa.png" width="100" />
     </ButtonBase>
 );
 

@@ -73,7 +73,7 @@ const SwapRoom = () => {
             updateSwapRequest(id)
                 .then((res) => {
                     getListSwap();
-                    dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thành công', severity: 'success' }));
                     setIsLoading(false);
                 })
                 .catch((err) => {
@@ -88,7 +88,7 @@ const SwapRoom = () => {
             rejectSwapRequest(id)
                 .then((res) => {
                     getListSwap();
-                    dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thành công', severity: 'success' }));
                     setIsLoading(false);
                 })
                 .catch((err) => {
@@ -103,8 +103,8 @@ const SwapRoom = () => {
                 <TabContext value={valueTab}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '322px' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label={t('Swap Room')} value="1" />
-                            <Tab label={t('Request')} value="2" />
+                            <Tab label={t('Đổi phòng')} value="1" />
+                            <Tab label={t('Duyệt đơn đổi phòng')} value="2" />
                         </TabList>
                     </Box>
                     {isLoading ? (

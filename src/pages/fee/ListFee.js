@@ -78,7 +78,7 @@ const ListFee = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">Fee List</Typography>
+                        <Typography variant="h4">Danh sách khoản phí</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
@@ -91,10 +91,10 @@ const ListFee = () => {
                                     inputProps={{ 'aria-label': 'Without label' }}
                                     onChange={(e) => setFeeQuery({ ...feeQuery, type: e.target.value })}
                                 >
-                                    <MenuItem value={''}>All fee</MenuItem>
-                                    <MenuItem value="Electric">Electric</MenuItem>
-                                    <MenuItem value="Water">Water</MenuItem>
-                                    <MenuItem value="Internet">Internet</MenuItem>
+                                    <MenuItem value={''}>Tất cả khoản phí</MenuItem>
+                                    <MenuItem value="Electric">Tiền điện</MenuItem>
+                                    <MenuItem value="Water">Tiền nước</MenuItem>
+                                    <MenuItem value="Internet">Tiền mạng</MenuItem>
                                 </Select>
                             </FormControl>
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getFee()}>
@@ -118,22 +118,22 @@ const ListFee = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="20%" style={{ minWidth: 100 }} align="left">
-                                                {t('Name')}
+                                                {t('Tên khoản phí')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Cost')}
+                                                {t('Phải thu')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Type')}
+                                                {t('Loại phí')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Create at')}
+                                                {t('Ngày tạo')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Deadline')}
+                                                {t('Thời hạn')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Paid')}
+                                                {t('Trạng thái')}
                                             </TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -154,7 +154,13 @@ const ListFee = () => {
                                                     />
                                                 </TableCell>
                                                 <TableCell align="left">{row?.fee?.cost}</TableCell>
-                                                <TableCell align="left">{row?.fee?.type}</TableCell>
+                                                <TableCell align="left">
+                                                    {row?.fee?.type == 'Electric'
+                                                        ? 'Tiền điện'
+                                                        : row?.fee?.type == 'Water'
+                                                        ? 'Tiền nước'
+                                                        : 'Tiền mạng'}
+                                                </TableCell>
                                                 <TableCell align="left">{moment(row?.fee?.createdAt).format('YYYY-MM-DD')}</TableCell>
                                                 <TableCell align="left">{moment(row?.fee?.deadline).format('YYYY-MM-DD')}</TableCell>
                                                 <TableCell align="left">{row?.paid ? 'Done' : '_'}</TableCell>

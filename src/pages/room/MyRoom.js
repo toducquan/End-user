@@ -86,13 +86,13 @@ const MyRoom = () => {
                 <React.Fragment>
                     <Box sx={{ width: '100%', mr: 2 }}>
                         <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
-                            {t('My Room')}
+                            {t('Phòng của tôi')}
                         </Typography>
                         <TabContext value={valueTab}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '322px' }}>
                                 <TabList onChange={handleChange} aria-label="lab API tabs example">
-                                    <Tab label={t('Room Detail')} value="1" />
-                                    <Tab label={t('Roomates')} value="2" />
+                                    <Tab label={t('Thông tin')} value="1" />
+                                    <Tab label={t('Sinh viên')} value="2" />
                                 </TabList>
                             </Box>
                             {isLoading ? (
@@ -113,10 +113,10 @@ const MyRoom = () => {
             ) : (
                 <Grid sx={{ mr: 3, position: 'absolute', top: '40%', left: '50%', textAlign: 'center' }}>
                     <Typography variant="h5" sx={{ mb: 2 }}>
-                        Ban chua tham gia vao ki tuc xa
+                        Bạn chưa được thêm vào phòng kí túc
                     </Typography>
                     <Button variant="contained" onClick={() => navigate('/aspiration')}>
-                        Dang ki ngay
+                        Đăng kí ngay
                     </Button>
                 </Grid>
             )}
