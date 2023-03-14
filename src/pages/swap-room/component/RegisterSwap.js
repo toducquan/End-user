@@ -69,6 +69,7 @@ const RegisterSwap = ({ isLoading, setIsLoading, receiverUser, setReceiverUser }
                                 id="building-name"
                                 sx={{ width: '60%', my: 2, mr: 2 }}
                                 name="name"
+                                placeholder="Nhập mssv cần tìm"
                                 value={studentId}
                                 onChange={(e) => setStudentId(e.target.value)}
                             />

@@ -98,7 +98,6 @@ const UserDetail = () => {
                                     grade: user?.grade,
                                     major: user?.major
                                 }}
-                                validationSchema={Yup.object().shape({})}
                                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                                     updateUser(values);
                                 }}
@@ -122,6 +121,11 @@ const UserDetail = () => {
                                                             value={values?.name}
                                                             onChange={handleChange}
                                                         />
+                                                        {touched.name && errors.name && (
+                                                            <FormHelperText error id="helper-text-name-signup">
+                                                                {errors.name}
+                                                            </FormHelperText>
+                                                        )}
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item xs={10}>
@@ -139,6 +143,11 @@ const UserDetail = () => {
                                                             value={values?.phone}
                                                             onChange={handleChange}
                                                         />
+                                                        {touched.phone && errors.phone && (
+                                                            <FormHelperText error id="helper-text-name-signup">
+                                                                {errors.phone}
+                                                            </FormHelperText>
+                                                        )}
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item xs={10}>
@@ -156,6 +165,11 @@ const UserDetail = () => {
                                                             value={values?.age}
                                                             onChange={handleChange}
                                                         />
+                                                        {touched.age && errors.age && (
+                                                            <FormHelperText error id="helper-text-name-signup">
+                                                                {errors.age}
+                                                            </FormHelperText>
+                                                        )}
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item xs={10}>
@@ -325,6 +339,11 @@ const UserDetail = () => {
                                                             onBlur={handleBlur}
                                                             value={values?.email}
                                                         />
+                                                        {touched.email && errors.email && (
+                                                            <FormHelperText error id="helper-text-name-signup">
+                                                                {errors.email}
+                                                            </FormHelperText>
+                                                        )}
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item xs={10}>
@@ -363,6 +382,11 @@ const UserDetail = () => {
                                                             onBlur={handleBlur}
                                                             value={values?.studentId}
                                                         />
+                                                        {touched.studentId && errors.studentId && (
+                                                            <FormHelperText error id="helper-text-name-signup">
+                                                                {errors.studentId}
+                                                            </FormHelperText>
+                                                        )}
                                                     </Stack>
                                                 </Grid>
                                                 <Grid item xs={10}>

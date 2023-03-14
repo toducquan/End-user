@@ -87,7 +87,7 @@ const ListRent = () => {
                                     size="small"
                                     id="header-search"
                                     displayEmpty
-                                    placeHolder={'Nhập tên khoản thuê'}
+                                    placeholder={'Nhập tên khoản thuê'}
                                     inputProps={{ 'aria-label': 'Without label' }}
                                     onChange={(e) => setRentQuery({ ...rentQuery, name: e.target.value })}
                                 />
@@ -149,7 +149,7 @@ const ListRent = () => {
                                                 <TableCell align="left">{row?.rent?.cost}</TableCell>
                                                 <TableCell align="left">{moment(row?.rent?.createdAt).format('YYYY-MM-DD')}</TableCell>
                                                 <TableCell align="left">{moment(row?.rent?.deadline).format('YYYY-MM-DD')}</TableCell>
-                                                <TableCell align="left">{row?.paid ? 'Xong' : '_'}</TableCell>
+                                                <TableCell align="left">{row?.paid ? 'Hoàn thành' : '_'}</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>

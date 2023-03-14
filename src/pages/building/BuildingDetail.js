@@ -108,7 +108,6 @@ const BuildingDetail = () => {
                                                             error={Boolean(touched.name && errors.name)}
                                                             onBlur={handleBlur}
                                                             value={values?.name}
-                                                            onChange={handleChange}
                                                         />
                                                         {touched.name && errors.name && (
                                                             <FormHelperText
@@ -163,7 +162,6 @@ const BuildingDetail = () => {
                                                             }
                                                             value={values?.numberOfFloors}
                                                             onBlur={handleBlur}
-                                                            onChange={handleChange}
                                                         />
                                                         {touched.numberOfFloors && errors.numberOfFloors && (
                                                             <FormHelperText

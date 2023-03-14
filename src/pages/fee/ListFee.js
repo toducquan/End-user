@@ -163,7 +163,7 @@ const ListFee = () => {
                                                 </TableCell>
                                                 <TableCell align="left">{moment(row?.fee?.createdAt).format('YYYY-MM-DD')}</TableCell>
                                                 <TableCell align="left">{moment(row?.fee?.deadline).format('YYYY-MM-DD')}</TableCell>
-                                                <TableCell align="left">{row?.paid ? 'Done' : '_'}</TableCell>
+                                                <TableCell align="left">{row?.paid ? 'Hoàn thành' : '_'}</TableCell>
                                             </TableRow>
                                         ))}
                                     </TableBody>
